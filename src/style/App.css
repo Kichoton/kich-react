@@ -1,0 +1,292 @@
+/* 
+#006EF2
+#3A4651
+*/
+
+/* Global */
+
+@font-face {
+  font-family: HkGrotesk;
+  src: url(/src/assets/hkgroteskwide-regular.otf);
+}
+
+html{
+  overflow-x: hidden;
+}
+body{
+  font-family: HkGrotesk;
+  color: white;
+  margin: 0;
+}
+
+.GridBackground{
+  position: fixed;
+  top:0;
+
+  margin: 0;
+  padding: 0;
+  
+  width: 100vw;
+  height: 100vh;
+ 
+  background: #ffffff00;
+  background-image: linear-gradient(#ffffff1e .1em, transparent .1em), linear-gradient(90deg, #ffffff1e .1em, transparent .1em);
+  background-size: 15em 15em;
+  
+  
+}
+
+.ColoredBackground{
+  position: fixed;
+  top:0;
+
+  margin: 0;
+  padding: 0;
+  
+  width: 100vw;
+  height: 100vh;
+ 
+  background: rgb(58,70,81);
+  background: linear-gradient(-35deg, rgba(58,70,81,1) 0%, rgba(0,110,242,1) 100%);
+
+}
+
+#AppButtons{
+  position: fixed;
+  top:0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.footer-active{
+  transform: translateX(0) !important;
+}
+
+#footer-container{
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  padding: 5vw;
+  /* padding-left: 5vw; */
+  /* padding-right: 5vw; */
+  bottom: 0;
+  background-color: #3A4651;
+  transform: translateX(100%);
+}
+
+#footer-btn{
+  bottom: 3%;
+  right: 20px;
+  z-index: 3;
+}
+
+.triangle-footer{
+  position: absolute;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 0 0 100vw;
+  border-color: transparent transparent transparent #3A4651;
+}
+
+.nav-btn-container{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%,0)
+}
+
+.kich-btn{
+   position: absolute;
+   background: none;
+   margin: 0;
+   padding: 0;
+   border: none;
+  
+}
+
+.kich-btn-bg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+
+  background-color: #3A4651;
+  color: #fffef0;
+
+  border-radius: 5px;
+  border: none;
+
+}
+
+.kich-btn-touch{
+  position: absolute;
+  height: 40px;
+  width: 40px;
+
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fffef0;
+
+  transform: translate(-5px, -5px); 
+  
+  border-radius: 5px;
+
+  cursor: pointer;
+
+}
+
+.kich-btn-touch:active{
+  transform: translate(-2px, -2px); 
+}
+
+.kich-btn-bg .bi {
+  font-size: 1.5rem;
+  color : #3A4651;
+}
+
+.kich-btn-active > .kich-btn-bg > .kich-btn-touch{
+  transform: translate(-2px, -2px); 
+}
+
+.kich-btn-title{
+  color: #fff;
+
+  position:absolute;
+  padding: 0;
+  margin: 0;
+}
+
+/* haut */
+#nav-btn-kich{
+  bottom: 50px;
+  left: 70px;
+  transform: translate(-50%,0);
+}
+
+#nav-btn-kich > .kich-btn-title{
+  top:0;
+  left:50%;
+  transform: translate(-50%, -30px);
+}
+
+/* droite */
+#nav-btn-games{
+  bottom: 0;
+  left: 120px;
+  transform: translate(-50%,0);
+}
+
+#nav-btn-games > .kich-btn-title{
+  top:50%;
+  right:0;
+  transform: translate(50px, -50%);
+}
+
+/* gauche */
+#nav-btn-network{
+  bottom: 0;
+  left: 0;
+}
+
+#nav-btn-network > .kich-btn-title{
+  top:50%;
+  left:0;
+  transform: translate(-80px, -50%);
+}
+
+/* bas */
+#nav-btn-home{
+  bottom: 0;
+  left: 70px;
+  transform: translate(-50%,0);
+}
+
+/* HomePage */
+
+.hp-container{
+  position: relative;
+  width: 100vw;
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Kich */
+
+.kich-container{
+  margin: 0;
+  /* padding-left: 4vw; */
+  padding-bottom: 150px;
+  /* background-color: #fff; */
+  position: relative;
+  /* width: 100vw; */
+}
+
+.kich-container h1{
+  font-family: HkGrotesk;
+  text-align: center;
+
+  padding-top: 30vh;
+  padding-bottom: 30vh;
+
+}
+
+.kich-theo{
+
+  filter: drop-shadow(0 0 0.75rem #0000008a);
+  position: relative;
+  background-color: #ffffffcb ;
+  padding-left: 5vw;
+  padding-right: 5vw;  
+  padding-top: 5vh;  
+  padding-bottom: 5vh;  
+  color : #006EF2;
+}
+
+.kich-theo > hr{
+  width: 50%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.triangle-theo-top{
+  position: absolute;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 0 0 100vw;
+  border-color: transparent transparent transparent #ffffffcb;
+}
+
+.triangle-theo-bot{
+  position: absolute;
+  transform: translateY(100%);
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 100vw 50px 0;
+  border-color: transparent #ffffffcb transparent transparent;  
+}
+
+
+/* Games */

@@ -52,8 +52,8 @@ function Carousel() {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const slides = [
     {
-      title: 'Slide 1',
-      image: 'image1.jpg',
+      title: 'Valorant',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/langfr-520px-Valorant_logo_-_pink_color_version.svg.png',
       text: 'Description du Slide 1'
     },
     {
@@ -81,45 +81,82 @@ function Carousel() {
   const goToPrevious = () => {
     console.log('prev');
     setCarouselIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+    setIsExpanded(false);
   };
 
   const goToNext = () => {
     console.log('next');
     setCarouselIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
+    setIsExpanded(false);
+  };
+
+  const goToSlide = (index) => {
+    setCarouselIndex(index);
+    setIsExpanded(false);
+  };
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleSeeMore = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
     <div className="carousel">
       <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
-        Précédent
+        <i className="bi bi-arrow-left-short"></i>
       </button>
       <div className="carousel-slides">
+        {/* Le background pourrait etre dans l'objet slide, et il pourrait comment etre transparent to la couleur chosis 
+       */}
         {slides.map((slide, index) => (
           <div
             key={index}
             className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
+            style={{ transform: `translateX(${(index - carouselIndex) * 100}%)` }}
           >
-            <h2>{slide.title}</h2>
             <img src={slide.image} alt={slide.title} />
-            <p>{slide.text}</p>
+            <h2>
+              {slide.title}
+            </h2>
+            {/* Ajouter du text dans le see more, qui serait dans overlfow a droite et qui se décalerait au click en meme tempsque la barre du see more se décale */}
+            <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
+              <button onClick={handleSeeMore}>
+                <i className="bi bi-plus"></i>
+              </button>
+              <span className='carousel-divider'></span>
+              <div className='carousel-info'>
+                {slide.text}
+              </div>
+            </div>
           </div>
         ))}
       </div>
       <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
-        Suivant
+        <i className="bi bi-arrow-right-short"></i>
       </button>
+      <div className="carousel-pagination">
+        {/* Mettre les logos a la place des boutons */}
+        {slides.map((slide, index) => (
+          <button
+            key={index}
+            className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div>
     </div>
+    
   );
 }
-
-
 
 
 function GamesPage(){
 
   return(
     <main className="games-container">
-      <Carousel />
+      <h1>Les jeux</h1>
+      {/* <Carousel /> */}
     </main>
   )
 }
@@ -296,7 +333,7 @@ function App() {
   return (
       <div className="App">
           <ColoredBackground/>
-          <GridBackground />
+          <GridBackground /> 
           {contentView}
           <GlobalButtons setActiveItem={setActiveItem} />
       </div>

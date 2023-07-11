@@ -47,11 +47,79 @@ function KichPage(){
 }
 
 
+
+function Carousel() {
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const slides = [
+    {
+      title: 'Slide 1',
+      image: 'image1.jpg',
+      text: 'Description du Slide 1'
+    },
+    {
+      title: 'Slide 2',
+      image: 'image2.jpg',
+      text: 'Description du Slide 2'
+    },
+    {
+      title: 'Slide 3',
+      image: 'image3.jpg',
+      text: 'Description du Slide 3'
+    },
+    {
+      title: 'Slide 4',
+      image: 'image4.jpg',
+      text: 'Description du Slide 4'
+    },
+    {
+      title: 'Slide 5',
+      image: 'image5.jpg',
+      text: 'Description du Slide 5'
+    }
+  ];
+
+  const goToPrevious = () => {
+    console.log('prev');
+    setCarouselIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+  };
+
+  const goToNext = () => {
+    console.log('next');
+    setCarouselIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  return (
+    <div className="carousel">
+      <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
+        Précédent
+      </button>
+      <div className="carousel-slides">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
+          >
+            <h2>{slide.title}</h2>
+            <img src={slide.image} alt={slide.title} />
+            <p>{slide.text}</p>
+          </div>
+        ))}
+      </div>
+      <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
+        Suivant
+      </button>
+    </div>
+  );
+}
+
+
+
+
 function GamesPage(){
 
   return(
     <main className="games-container">
-
+      <Carousel />
     </main>
   )
 }
@@ -101,12 +169,12 @@ function GlobalButtons( {setActiveItem}) {
     let footerBtn = document.getElementById(event.currentTarget.id);
     let footerContainer = document.getElementById("footer-container");
 
-    if(footerBtn.offsetParent.classList.contains('kich-btn-active')){
+    if(footerBtn.parentElement.parentElement.classList.contains('kich-btn-active')){
       footerContainer.classList.remove("footer-active");
-      footerBtn.offsetParent.classList.remove('kich-btn-active');
+      footerBtn.parentElement.parentElement.classList.remove('kich-btn-active');
     }else{
       footerContainer.classList.add("footer-active");
-      footerBtn.offsetParent.classList.add('kich-btn-active');
+      footerBtn.parentElement.parentElement.classList.add('kich-btn-active');
     }
     
     
@@ -121,7 +189,7 @@ function GlobalButtons( {setActiveItem}) {
     }
     
     let btnNavClicked = document.getElementById(event.currentTarget.id);
-    btnNavClicked.offsetParent.classList.add('kich-btn-active');
+    btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');
       
     switch (event.currentTarget.id) {
       case 'home':

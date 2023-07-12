@@ -1,7 +1,6 @@
 import logo from '../assets/logo_kich_white.png';
 import '../style/App.css';
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 
 
@@ -267,37 +266,34 @@ function GlobalButtons( {setActiveItem}) {
       <nav className="nav-btn-container">
         <span id="nav-btn-kich" className="kich-btn kich-nav">
             <span className="kich-btn-bg">
-                <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-up-fill"></i>
-                </Link>
+            <button id="kich" className="kich-btn-touch" onClick={handleNavClick}>
+                <i className="bi bi-caret-up-fill"></i>
+            </button>
             </span>
             <p className="kich-btn-title">Kichoton</p>
         </span>
         <span id="nav-btn-games" className="kich-btn kich-nav">
             <span className="kich-btn-bg">
                 {/* <button id="games" className="kich-btn-touch" onClick={() => setActiveItem('games')}> */}
-                {/* <button id="games" className="kich-btn-touch" onClick={handleNavClick}> */}
-                <Link to="/jeux" id="games" className="kich-btn-touch" onClick={handleNavClick}>
+                <button id="games" className="kich-btn-touch" onClick={handleNavClick}>
                     <i className="bi bi-caret-right-fill"></i>
-                </Link>
+                </button>
             </span>
             <p className="kich-btn-title">Jeux</p>
         </span>
         <span id="nav-btn-network" className="kich-btn kich-nav">
             <span className="kich-btn-bg">
-                {/* <button id="network" className="kich-btn-touch" onClick={() => setActiveItem('network')}> */}
-                <Link to="/réseaux" id="network" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-left-fill"></i>
-                </Link>
+            <button id="network" className="kich-btn-touch" onClick={handleNavClick}>
+                <i className="bi bi-caret-left-fill"></i>
+            </button>
             </span>
             <p className="kich-btn-title">Réseaux</p>
         </span>
         <span id="nav-btn-home" className="kich-btn kich-nav kich-btn-active">
             <span className="kich-btn-bg">
-                {/* <button id="home" className="kich-btn-touch" onClick={() => setActiveItem('home')}> */}
-                <Link to="/" id="home" className="kich-btn-touch" onClick={handleNavClick}>
-                <i className="bi bi-house-down-fill"></i>
-                </Link>
+              <button id="home" className="kich-btn-touch" onClick={handleNavClick}>
+                  <i className="bi bi-house-fill"></i>
+              </button>
             </span>
             {/* <p className="kich-btn-title">Accueil</p> */}
         </span>
@@ -330,21 +326,14 @@ function App() {
         contentView = <HomePage />;
     }
     return (
-      <Router>
+      
         <div className="App">
         
           <ColoredBackground/>
           <GridBackground /> 
-          <Routes>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/kichoton" component={KichPage} />
-            <Route path="/jeux" component={GamesPage} />
-            <Route path="/réseaux" component={NetworkPage} />
-          </Routes>
           {contentView}
           <GlobalButtons setActiveItem={setActiveItem} />
         </div>
-      </Router>
     );
   
   

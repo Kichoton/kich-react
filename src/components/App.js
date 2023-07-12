@@ -168,7 +168,8 @@ function NetworkPage(){
   )
 }
 
-function GlobalButtons( {setActiveItem}) {
+// function GlobalButtons( {setActiveItem}) {
+function GlobalButtons() {
   
   // keyboard event
   useEffect(() => {
@@ -227,23 +228,23 @@ function GlobalButtons( {setActiveItem}) {
     let btnNavClicked = document.getElementById(event.currentTarget.id);
     btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');
       
-    switch (event.currentTarget.id) {
-      case 'home':
-        setActiveItem('home')
-        break;
-      case 'kich':
-        setActiveItem('kich')
-        break;
-      case 'games':
-        setActiveItem('games')
-        break;
-      case 'network':
-        setActiveItem('network')
-        break;   
-      default:
-        setActiveItem('home')
-        break;
-    }
+    // switch (event.currentTarget.id) {
+    //   case 'home':
+    //     setActiveItem('home')
+    //     break;
+    //   case 'kich':
+    //     setActiveItem('kich')
+    //     break;
+    //   case 'games':
+    //     setActiveItem('games')
+    //     break;
+    //   case 'network':
+    //     setActiveItem('network')
+    //     break;   
+    //   default:
+    //     setActiveItem('home')
+    //     break;
+    // }
     
   }
   
@@ -309,26 +310,26 @@ function GlobalButtons( {setActiveItem}) {
 
 function App() {
   
-    const [activeItem, setActiveItem] = useState('home');
+    // const [activeItem, setActiveItem] = useState('home');
 
-    let contentView;
+    // let contentView;
 
-    switch (activeItem) {
-      case 'home':
-        contentView = <HomePage />;
-        break;
-      case 'kich':
-        contentView = <KichPage />;
-        break;
-      case 'games':
-        contentView = <GamesPage />;
-        break;
-      case 'network':
-        contentView = <NetworkPage />;
-        break;
-      default:
-        contentView = <HomePage />;
-    }
+    // switch (activeItem) {
+    //   case 'home':
+    //     contentView = <HomePage />;
+    //     break;
+    //   case 'kich':
+    //     contentView = <KichPage />;
+    //     break;
+    //   case 'games':
+    //     contentView = <GamesPage />;
+    //     break;
+    //   case 'network':
+    //     contentView = <NetworkPage />;
+    //     break;
+    //   default:
+    //     contentView = <HomePage />;
+    // }
     return (
       <Router>
         <div className="App">
@@ -336,13 +337,14 @@ function App() {
           <ColoredBackground/>
           <GridBackground /> 
           <Routes>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/kichoton" component={KichPage} />
-            <Route path="/jeux" component={GamesPage} />
-            <Route path="/réseaux" component={NetworkPage} />
+            <Route exact path="/" element={<HomePage/>} />
+            <Route path="/kichoton" element={<KichPage/>} />
+            <Route path="/jeux" element={<GamesPage/>} />
+            <Route path="/réseaux" element={<NetworkPage/>} />
           </Routes>
-          {contentView}
-          <GlobalButtons setActiveItem={setActiveItem} />
+          {/* {contentView} */}
+          {/* <GlobalButtons setActiveItem={setActiveItem} /> */}
+          <GlobalButtons />
         </div>
       </Router>
     );

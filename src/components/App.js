@@ -1,7 +1,7 @@
 import logo from '../assets/logo_kich_white.png';
 import '../style/App.css';
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 
 
 
@@ -46,7 +46,6 @@ function KichPage(){
     </main>
   )
 }
-
 
 function Carousel() {
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -107,8 +106,6 @@ function Carousel() {
         <i className="bi bi-arrow-left-short"></i>
       </button>
       <div className="carousel-slides">
-        {/* Le background pourrait etre dans l'objet slide, et il pourrait comment etre transparent to la couleur chosis 
-       */}
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -119,9 +116,9 @@ function Carousel() {
             <h2>
               {slide.title}
             </h2>
-            {/* Ajouter du text dans le see more, qui serait dans overlfow a droite et qui se décalerait au click en meme tempsque la barre du see more se décale */}
+            
             <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
-              <button onClick={handleSeeMore}>
+              <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
                 <i className="bi bi-plus"></i>
               </button>
               <span className='carousel-divider'></span>
@@ -163,7 +160,7 @@ function GamesPage(){
 function NetworkPage(){
   return(
     <main className="network-container">
-      
+      <p>réseaux</p>
     </main>
   )
 }
@@ -175,24 +172,27 @@ function GlobalButtons() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       switch (event.key) {
-            case "ArrowUp":
-              document.getElementById('kich').click();
-              break;
-            case "ArrowDown":
-              document.getElementById('home').click();
-              break;
-            case "ArrowRight":
-              document.getElementById('games').click();
-              break;
-            case "ArrowLeft":
-              document.getElementById('network').click();
-              break;
-            case "i":
-              document.getElementById('footer').click();
-              break;
-            default:
-              break;
-          }
+        case "ArrowUp":
+          document.getElementById('kich').click();
+          break;
+          case "ArrowDown":
+          document.getElementById('home').click();
+          break;
+          case "ArrowRight":
+          document.getElementById('games').click();
+          break;
+        case "ArrowLeft":
+          document.getElementById('network').click();
+          break;
+        case "i":
+          document.getElementById('footer').click();
+          break;
+        case "+":
+          document.getElementById('carousel-see-more-btn').click();
+          break;
+        default:
+          break;
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -213,8 +213,6 @@ function GlobalButtons() {
       footerContainer.classList.add("footer-active");
       footerBtn.parentElement.parentElement.classList.add('kich-btn-active');
     }
-    
-    
   }
 
   function handleNavClick(event){
@@ -226,27 +224,18 @@ function GlobalButtons() {
     }
     
     let btnNavClicked = document.getElementById(event.currentTarget.id);
-    btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');
-      
-    // switch (event.currentTarget.id) {
-    //   case 'home':
-    //     setActiveItem('home')
-    //     break;
-    //   case 'kich':
-    //     setActiveItem('kich')
-    //     break;
-    //   case 'games':
-    //     setActiveItem('games')
-    //     break;
-    //   case 'network':
-    //     setActiveItem('network')
-    //     break;   
-    //   default:
-    //     setActiveItem('home')
-    //     break;
-    // }
-    
+    btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');    
   }
+
+  const location = useLocation();
+  const currentURL = location.pathname;
+
+  const buttons = [
+    { key: 0, id: "kich", label: 'bi bi-caret-up-fill', url: '/kichoton'},
+    { key: 1, id: "games", label: 'bi bi-caret-right-fill', url: '/jeux'},
+    { key: 2, id: "network", label: 'bi bi-caret-left-fill', url: '/reseaux'},
+    { key: 3, id: "home", label: 'bi bi-house-fill', url: '/'},
+  ];
   
   return(
     <div id="AppButtons">
@@ -264,40 +253,77 @@ function GlobalButtons() {
           </span>
       </span>
 
-
       <nav className="nav-btn-container">
-        <span id="nav-btn-kich" className="kich-btn kich-nav">
+        <span id="nav-btn-kich" className={`kich-btn kich-nav ${currentURL === buttons[0].url ? 'kich-btn-active' : ''}`}>
             <span className="kich-btn-bg">
-                <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-up-fill"></i>
+              
+                <Link
+                  key={buttons[0].key}
+                  id={buttons[0].id}
+                  to={buttons[0].url}
+                  className="kich-btn-touch"
+                  onClick={handleNavClick}
+                >
+                  <i className={buttons[0].label}></i>
                 </Link>
+              
+                {/* <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
+                    <i className="bi bi-caret-up-fill"></i>
+                </Link> */}
             </span>
             <p className="kich-btn-title">Kichoton</p>
         </span>
-        <span id="nav-btn-games" className="kich-btn kich-nav">
+        <span id="nav-btn-games" className={`kich-btn kich-nav ${currentURL === buttons[1].url ? 'kich-btn-active' : ''}`}>
             <span className="kich-btn-bg">
                 {/* <button id="games" className="kich-btn-touch" onClick={() => setActiveItem('games')}> */}
                 {/* <button id="games" className="kich-btn-touch" onClick={handleNavClick}> */}
-                <Link to="/jeux" id="games" className="kich-btn-touch" onClick={handleNavClick}>
+                {/* <Link to="/jeux" id="games" className="kich-btn-touch" onClick={handleNavClick}>
                     <i className="bi bi-caret-right-fill"></i>
+                </Link> */}
+                 <Link
+                  key={buttons[1].key}
+                  id={buttons[1].id}
+                  to={buttons[1].url}
+                  className="kich-btn-touch"
+                  onClick={handleNavClick}
+                >
+                  <i className={buttons[1].label}></i>
                 </Link>
             </span>
             <p className="kich-btn-title">Jeux</p>
         </span>
-        <span id="nav-btn-network" className="kich-btn kich-nav">
+        <span id="nav-btn-network" className={`kich-btn kich-nav ${currentURL === buttons[2].url ? 'kich-btn-active' : ''}`}>
             <span className="kich-btn-bg">
                 {/* <button id="network" className="kich-btn-touch" onClick={() => setActiveItem('network')}> */}
-                <Link to="/réseaux" id="network" className="kich-btn-touch" onClick={handleNavClick}>
+                {/* <Link to="/reseaux" id="network" className="kich-btn-touch" onClick={handleNavClick}>
                     <i className="bi bi-caret-left-fill"></i>
+                </Link> */}
+                <Link
+                  key={buttons[2].key}
+                  id={buttons[2].id}
+                  to={buttons[2].url}
+                  className="kich-btn-touch"
+                  onClick={handleNavClick}
+                >
+                  <i className={buttons[2].label}></i>
                 </Link>
             </span>
             <p className="kich-btn-title">Réseaux</p>
         </span>
-        <span id="nav-btn-home" className="kich-btn kich-nav kich-btn-active">
+        <span id="nav-btn-home" className={`kich-btn kich-nav ${currentURL === buttons[3].url ? 'kich-btn-active' : ''}`}>
             <span className="kich-btn-bg">
                 {/* <button id="home" className="kich-btn-touch" onClick={() => setActiveItem('home')}> */}
-                <Link to="/" id="home" className="kich-btn-touch" onClick={handleNavClick}>
-                <i className="bi bi-house-down-fill"></i>
+                {/* <Link to="/" id="home" className="kich-btn-touch" onClick={handleNavClick}>
+                  <i className="bi bi-house-down-fill"></i>
+                </Link> */}
+                <Link
+                  key={buttons[3].key}
+                  id={buttons[3].id}
+                  to={buttons[3].url}
+                  className="kich-btn-touch"
+                  onClick={handleNavClick}
+                >
+                  <i className={buttons[3].label}></i>
                 </Link>
             </span>
             {/* <p className="kich-btn-title">Accueil</p> */}
@@ -310,27 +336,9 @@ function GlobalButtons() {
 
 function App() {
   
-    // const [activeItem, setActiveItem] = useState('home');
 
-    // let contentView;
-
-    // switch (activeItem) {
-    //   case 'home':
-    //     contentView = <HomePage />;
-    //     break;
-    //   case 'kich':
-    //     contentView = <KichPage />;
-    //     break;
-    //   case 'games':
-    //     contentView = <GamesPage />;
-    //     break;
-    //   case 'network':
-    //     contentView = <NetworkPage />;
-    //     break;
-    //   default:
-    //     contentView = <HomePage />;
-    // }
     return (
+      // Doc : https://reactrouter.com/en/main
       <Router>
         <div className="App">
         
@@ -340,10 +348,9 @@ function App() {
             <Route exact path="/" element={<HomePage/>} />
             <Route path="/kichoton" element={<KichPage/>} />
             <Route path="/jeux" element={<GamesPage/>} />
-            <Route path="/réseaux" element={<NetworkPage/>} />
+            <Route path="/reseaux" element={<NetworkPage/>} />
           </Routes>
-          {/* {contentView} */}
-          {/* <GlobalButtons setActiveItem={setActiveItem} /> */}
+          
           <GlobalButtons />
         </div>
       </Router>

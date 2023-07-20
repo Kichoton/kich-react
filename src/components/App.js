@@ -52,29 +52,15 @@ function Carousel() {
   const slides = [
     {
       title: 'Valorant',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/langfr-520px-Valorant_logo_-_pink_color_version.svg.png',
-      text: 'Description du Slide 1'
+      image: 'https://logodownload.org/wp-content/uploads/2020/06/valorant-logo-1.png',
+      text: (
+        <p>
+          Valorant est un jeu vidéo free-to-play de tir à la première personne en multijoueur développé et édité par Riot Games et sorti le 2 juin 2020.
+        </p>
+      ),
+      color: '#FD4556'
     },
-    {
-      title: 'Slide 2',
-      image: 'image2.jpg',
-      text: 'Description du Slide 2'
-    },
-    {
-      title: 'Slide 3',
-      image: 'image3.jpg',
-      text: 'Description du Slide 3'
-    },
-    {
-      title: 'Slide 4',
-      image: 'image4.jpg',
-      text: 'Description du Slide 4'
-    },
-    {
-      title: 'Slide 5',
-      image: 'image5.jpg',
-      text: 'Description du Slide 5'
-    }
+
   ];
 
   const goToPrevious = () => {
@@ -98,6 +84,13 @@ function Carousel() {
 
   const handleSeeMore = () => {
     setIsExpanded(!isExpanded);
+    if (isExpanded === true) {
+      console.log(isExpanded)
+      document.getElementById('carousel-see-more-btn').innerHTML = '+';
+    }else{
+      console.log(isExpanded)
+      document.getElementById('carousel-see-more-btn').innerHTML = '-';
+    }
   };
 
   return (
@@ -110,7 +103,10 @@ function Carousel() {
           <div
             key={index}
             className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
-            style={{ transform: `translateX(${(index - carouselIndex) * 100}%)` }}
+            style={{ 
+              transform: `translateX(${(index - carouselIndex) * 100}%)`,
+              background: `linear-gradient(90deg,`+ slide.color +` 0%, #3A4651 72%)`
+             }}
           >
             <img src={slide.image} alt={slide.title} />
             <h2>
@@ -119,7 +115,8 @@ function Carousel() {
             
             <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
               <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
-                <i className="bi bi-plus"></i>
+                {/* <i className="bi bi-plus"></i> */}
+                +
               </button>
               <span className='carousel-divider'></span>
               <div className='carousel-info'>
@@ -139,7 +136,9 @@ function Carousel() {
             key={index}
             className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
             onClick={() => goToSlide(index)}
-          />
+          >
+            <img src={slide.image} alt={slide.title}/>
+          </button>
         ))}
       </div>
     </div>
@@ -169,6 +168,10 @@ function NetworkPage(){
 function GlobalButtons() {
   
   // keyboard event
+
+  // TODO :
+  // Changer les fleches pas zqsd et voir si oon peut avoir l'info sur la langue du clavier (afficher la langue du clavier dans la console)
+  
   useEffect(() => {
     const handleKeyDown = (event) => {
       switch (event.key) {
@@ -188,7 +191,14 @@ function GlobalButtons() {
           document.getElementById('footer').click();
           break;
         case "+":
-          document.getElementById('carousel-see-more-btn').click();
+          if(!document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+            document.getElementById('carousel-see-more-btn').click();
+          };
+          break;
+        case "-":
+          if(document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+            document.getElementById('carousel-see-more-btn').click();
+          };
           break;
         default:
           break;

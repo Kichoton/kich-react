@@ -319,7 +319,7 @@ body{
   padding: 4% 2% 4% 2%;
 }
 .games-container h1{
-  color: red !important;
+  /* color: red !important; */
 }
 
 .carousel {
@@ -375,7 +375,7 @@ body{
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: red;
+  background: rgb(0,110,242);
   transition: transform 0.5s ease; /* Animation de transition */
   display: none;
   padding-left: 10%;
@@ -412,7 +412,7 @@ body{
   position: absolute;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   width: 25%;
   bottom : 0;
@@ -421,6 +421,32 @@ body{
 }
 
 .carousel-pagination button{
+  position: relative;
+
+  border: none;
+  background-color: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 10px 0 10px;
+  padding: 0;
+
+  height: 15px;
+  width: 15px;
+
+  cursor: pointer;
+
+  opacity: 0.5;
+}
+
+.carousel-pagination button img{
+  width: 100%;
+  height: auto
+}
+
+/* .carousel-pagination button{
   margin:0;
   padding:0;
 
@@ -433,7 +459,7 @@ body{
   border-radius: 50%;
 
   opacity: 0.5;
-}
+} */
 
 .carousel-pagination .pagination-active{
   opacity: 1 !important;
@@ -443,9 +469,7 @@ body{
   position: relative;
   height:100%;
   width: 33%;
-  background-color: blue;
   transition: 1s ease; /* Transition de la largeur */
-
 }
 
 .carousel-divider{

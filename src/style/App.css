@@ -334,7 +334,7 @@ body{
   position: absolute;
   border: none;
   text-decoration: none;
-  background-color: #3A4651;
+  background-color: #3a4651;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -375,7 +375,7 @@ body{
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: rgb(0,110,242);
+  /* background: rgb(0,110,242); */
   transition: transform 0.5s ease; /* Animation de transition */
   display: none;
   padding-left: 10%;

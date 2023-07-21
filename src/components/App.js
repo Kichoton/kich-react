@@ -60,6 +60,26 @@ function Carousel() {
       ),
       color: '#FD4556'
     },
+    {
+      title: 'Teamfight Tactics',
+      image: 'https://static.riot-esports.fr/uploads/_AUTOxAUTO_crop_center-center_75_none/tft-bug-render-gold_200507_131909.png',
+      text: (
+        <p>
+          Teamfight Tactics (abrégé TFT, parfois Combat Tactique (abrégé CT) en français) est un jeu vidéo de type auto battler développé et édité par Riot Games. Il prend place dans l'univers de League of Legends et est basé sur le jeu Dota Auto Chess (en), où le joueur affronte sept adversaires en ligne, qu'il doit combattre en formant une équipe afin d'être le dernier à rester en vie.
+        </p>
+      ),
+      color: '#DCB253'
+    },
+    {
+      title: 'League Of Legends',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png',
+      text: (
+        <p>
+          Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés.
+        </p>
+      ),
+      color: '#001A6C'
+    },
 
   ];
 
@@ -105,7 +125,7 @@ function Carousel() {
             className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
             style={{ 
               transform: `translateX(${(index - carouselIndex) * 100}%)`,
-              background: `linear-gradient(90deg,`+ slide.color +` 0%, #3A4651 72%)`
+              background: `linear-gradient(90deg, rgba(255,255,255,0) 0%, `+ slide.color +` 25%, #3A4651 75%)`
              }}
           >
             <img src={slide.image} alt={slide.title} />

@@ -1,191 +1,15 @@
-import logo from '../assets/logo_kich_white.png';
 import '../style/App.css';
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { GridBackground, ColoredBackground } from './Background';
+import { Home } from './Home';
+import { Kich } from './Kich';
+import { Games } from './Games';
+import { Network } from './Network';
 
-
-
-function GridBackground(){
-  return (
-    <div className="GridBackground">
-    </div>
-  )
-}
-
-function ColoredBackground(){
-  return (
-    <div className="ColoredBackground">
-    </div>
-  )
-}
-
-function HomePage()
-{
-  return(
-      <main className="hp-container">
-          <img className="hp-img" src={logo}></img>
-      </main>
-  );
-}
-
-function KichPage(){
-  return(
-    <main className="kich-container">
-      <h1>Kichoton c'est ...</h1>
-      <div className="kich-theo">
-        <span className='triangle-theo-top'></span>
-        <span className='triangle-theo-bot'></span>
-         <p>... moi, Théo Saez, un streameur Francais, recemment arrivé a Montréal.</p>
-        <p>L'aventure Twitch débute en 2022 sur la plateforme Twitch.</p>
-        <p>L'objectif de cette chaine est de se détendre, jouer entre amis, se détendre grace a des mates tous aussi drole, serieux, tryhardeur les uns que les autres.</p>
-        <p>Depuis 2023, l'aventure se poursuit sur la plateforme Kick.com</p>
-        <hr></hr>
-
-        <p>Passionné de jeux vidéos, le streaming permet de partager cet amour, mais également de partager ou faire découvrir d'autre centres d'interets tel que le BMX</p>
-      </div>
-    </main>
-  )
-}
-
-function Carousel() {
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const slides = [
-    {
-      title: 'Valorant',
-      image: 'https://logodownload.org/wp-content/uploads/2020/06/valorant-logo-1.png',
-      text: (
-        <p>
-          Valorant est un jeu vidéo free-to-play de tir à la première personne en multijoueur développé et édité par Riot Games et sorti le 2 juin 2020.
-        </p>
-      ),
-      color: '#FD4556'
-    },
-    {
-      title: 'Teamfight Tactics',
-      image: 'https://static.riot-esports.fr/uploads/_AUTOxAUTO_crop_center-center_75_none/tft-bug-render-gold_200507_131909.png',
-      text: (
-        <p>
-          Teamfight Tactics (abrégé TFT, parfois Combat Tactique (abrégé CT) en français) est un jeu vidéo de type auto battler développé et édité par Riot Games. Il prend place dans l'univers de League of Legends et est basé sur le jeu Dota Auto Chess (en), où le joueur affronte sept adversaires en ligne, qu'il doit combattre en formant une équipe afin d'être le dernier à rester en vie.
-        </p>
-      ),
-      color: '#DCB253'
-    },
-    {
-      title: 'League Of Legends',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png',
-      text: (
-        <p>
-          Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés.
-        </p>
-      ),
-      color: '#001A6C'
-    },
-
-  ];
-
-  const goToPrevious = () => {
-    console.log('prev');
-    setCarouselIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-    setIsExpanded(false);
-  };
-
-  const goToNext = () => {
-    console.log('next');
-    setCarouselIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
-    setIsExpanded(false);
-  };
-
-  const goToSlide = (index) => {
-    setCarouselIndex(index);
-    setIsExpanded(false);
-  };
-
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleSeeMore = () => {
-    setIsExpanded(!isExpanded);
-    if (isExpanded === true) {
-      console.log(isExpanded)
-      document.getElementById('carousel-see-more-btn').innerHTML = '+';
-    }else{
-      console.log(isExpanded)
-      document.getElementById('carousel-see-more-btn').innerHTML = '-';
-    }
-  };
-
-  return (
-    <div className="carousel">
-      <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
-        <i className="bi bi-arrow-left-short"></i>
-      </button>
-      <div className="carousel-slides">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
-            style={{ 
-              transform: `translateX(${(index - carouselIndex) * 100}%)`,
-              background: `linear-gradient(90deg, rgba(255,255,255,0) 0%, `+ slide.color +` 25%, #3A4651 75%)`
-             }}
-          >
-            <img src={slide.image} alt={slide.title} />
-            <h2>
-              {slide.title}
-            </h2>
-            
-            <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
-              <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
-                {/* <i className="bi bi-plus"></i> */}
-                +
-              </button>
-              <span className='carousel-divider'></span>
-              <div className='carousel-info'>
-                {slide.text}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
-        <i className="bi bi-arrow-right-short"></i>
-      </button>
-      <div className="carousel-pagination">
-        {/* Mettre les logos a la place des boutons */}
-        {slides.map((slide, index) => (
-          <button
-            key={index}
-            className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
-            onClick={() => goToSlide(index)}
-          >
-            <img src={slide.image} alt={slide.title}/>
-          </button>
-        ))}
-      </div>
-    </div>
-    
-  );
-}
-
-function GamesPage(){
-
-  return(
-    <main className="games-container">
-      <h1>Les jeux</h1>
-      <Carousel />
-    </main>
-  )
-}
-
-function NetworkPage(){
-  return(
-    <main className="network-container">
-      <p>réseaux</p>
-    </main>
-  )
-}
 
 // function GlobalButtons( {setActiveItem}) {
-function GlobalButtons() {
+function GlobalButtons()  {
   
   // keyboard event
 
@@ -247,6 +71,16 @@ function GlobalButtons() {
 
   function handleNavClick(event){
 
+    if(event.currentTarget.id === "network" ){
+      document.getElementById("AppButtons").classList.add('NavChangedActive');
+    }else{
+      if (document.getElementById("AppButtons").classList.contains('NavChangedActive')) {
+        document.getElementById("AppButtons").classList.remove('NavChangedActive')
+      }
+    }
+
+
+    // Ajout du press sur le btn cliqué
     for (let i = 0; i < navBtns.length; i++){
       if(navBtns[i].classList.contains('kich-btn-active')){
         navBtns[i].classList.remove('kich-btn-active');
@@ -260,13 +94,63 @@ function GlobalButtons() {
   const location = useLocation();
   const currentURL = location.pathname;
 
-  const buttons = [
-    { key: 0, id: "kich", label: 'bi bi-caret-up-fill', url: '/kichoton'},
-    { key: 1, id: "games", label: 'bi bi-caret-right-fill', url: '/jeux'},
-    { key: 2, id: "network", label: 'bi bi-caret-left-fill', url: '/reseaux'},
-    { key: 3, id: "home", label: 'bi bi-house-fill', url: '/'},
-  ];
+
   
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 500);
+  const [icons, setIcons] = useState({
+    kich: '',
+    games: '',
+    network: '',
+    home: '',
+  });
+  
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const newIsSmallScreen = screenWidth <= 500;
+
+      if (newIsSmallScreen !== isSmallScreen) {
+        setIsSmallScreen(newIsSmallScreen);
+        updateIcons(newIsSmallScreen);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isSmallScreen]);
+
+
+  useEffect(() => {
+    updateIcons(isSmallScreen);
+  }, [isSmallScreen]);
+
+  const updateIcons = (isSmallScreen) => {
+    if (isSmallScreen) {
+      setIcons({
+        kich: 'bi bi-person-vcard',
+        games: 'bi bi-controller',
+        network: 'bi bi-link',
+        home: 'bi bi-house-fill'
+      });
+    } else {
+      setIcons({
+        kich: 'bi bi-caret-up-fill',
+        games: 'bi bi-caret-right-fill',
+        network: 'bi bi-caret-left-fill',
+        home: 'bi bi-house-fill'
+      });
+    }
+  };
+
+  const buttons = [
+    { key: 0, id: "kich", label: icons.kich, url: '/kichoton'},
+    { key: 1, id: "games", label: icons.games, url: '/jeux'},
+    { key: 2, id: "network", label: icons.network, url: '/reseaux'},
+    { key: 3, id: "home", label: icons.home, url: '/'},
+  ];
+
   return(
     <div id="AppButtons">
 
@@ -295,11 +179,14 @@ function GlobalButtons() {
                   onClick={handleNavClick}
                 >
                   <i className={buttons[0].label}></i>
+                  {/* {buttons[0].label} */}
                 </Link>
               
-                {/* <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-up-fill"></i>
-                </Link> */}
+                {/* 
+                  <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
+                      <i className="bi bi-caret-up-fill"></i>
+                  </Link>
+                 */}
             </span>
             <p className="kich-btn-title">Kichoton</p>
         </span>
@@ -365,20 +252,23 @@ function GlobalButtons() {
 }
 
 function App() {
-  
 
+
+  
+  
     return (
       // Doc : https://reactrouter.com/en/main
       <Router>
         <div className="App">
         
           <ColoredBackground/>
-          <GridBackground /> 
+          <GridBackground/>
+
           <Routes>
-            <Route exact path="/" element={<HomePage/>} />
-            <Route path="/kichoton" element={<KichPage/>} />
-            <Route path="/jeux" element={<GamesPage/>} />
-            <Route path="/reseaux" element={<NetworkPage/>} />
+            <Route exact path="/" element={<Home/>} />
+            <Route path="/kichoton" element={<Kich/>} />
+            <Route path="/jeux" element={<Games/>} />
+            <Route path="/reseaux" element={<Network/>} />
           </Routes>
           
           <GlobalButtons />

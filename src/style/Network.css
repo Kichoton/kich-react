@@ -1,0 +1,64 @@
+/* ------- Network ------- */
+
+.network-container{
+    position: relative;
+    display: flex;
+    width : 100vw;
+    height: 100vh;
+}
+
+.network-container h1{
+  position: absolute;
+
+  top: 20px;
+  left: 50%;
+  
+  transform: translateX(-50%);
+
+  z-index: 1;
+}
+
+.network-div{
+  position: relative;
+  height : 100%;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.network-div img{
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  height: 25%;
+  width: auto;
+
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  opacity: 1;
+}
+
+.network-div:hover img{
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0.2;
+}
+
+@media (orientation: portrait) {
+
+  .network-container h1{
+    left: 0; 
+    top : 50%;
+    transform: translate(-25%, -100%) rotate(-90deg);
+  }
+  
+  .network-container{
+    flex-direction: column;
+  }
+}
+
+
+  
+  

@@ -1,0 +1,35 @@
+.GridBackground{
+  position: fixed;
+  top:0;
+
+  margin: 0;
+  padding: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -30;
+  
+  background: #ffffff00;
+  background-image: linear-gradient(#ffffff1e .1em, transparent .1em), linear-gradient(90deg, #ffffff1e .1em, transparent .1em);
+  background-size: 15em 15em;
+  
+  
+}
+
+.ColoredBackground{
+  position: fixed;
+  top:0;
+
+  margin: 0;
+  padding: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -30;
+  
+  background: rgb(58,70,81);
+  background: linear-gradient(-35deg, rgba(58,70,81,1) 0%, rgba(0,110,242,1) 100%);
+
+}

@@ -1,0 +1,15 @@
+
+.hp-container{
+    position: relative;
+    width: 100vw;
+  
+    height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.hp-img{
+    max-width: 50%;
+}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style/Games.css'
 
 
@@ -124,8 +124,14 @@ export function Carousel() {
 
 export function Games(){
 
+  // Utilisez useEffect pour simuler window.onload
+  useEffect(() => {
+    document.getElementById("games-container").style.height = window.innerHeight + 'px';
+    
+  });
+
     return(
-      <main className="games-container">
+      <main id="games-container">
         <h1>Les jeux</h1>
         <Carousel />
       </main>

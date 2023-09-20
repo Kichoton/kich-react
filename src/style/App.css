@@ -15,6 +15,7 @@ html{
 }
 
 body{
+  position: relative;
   font-family: HkGrotesk;
   color: white;
   margin: 0;

@@ -1,13 +1,13 @@
 /* ------- Network ------- */
 
-.network-container{
+#network-container{
     position: relative;
     display: flex;
     width : 100vw;
     height: 100vh;
 }
 
-.network-container h1{
+#network-container h1{
   position: absolute;
 
   top: 20px;
@@ -48,13 +48,13 @@
 
 @media (orientation: portrait) {
 
-  .network-container h1{
+  #network-container h1{
     left: 0; 
     top : 50%;
     transform: translate(-25%, -100%) rotate(-90deg);
   }
-  
-  .network-container{
+
+  #network-container{
     flex-direction: column;
   }
 }

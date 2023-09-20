@@ -67,67 +67,79 @@ export function Carousel() {
         document.getElementById('carousel-see-more-btn').innerHTML = '-';
       }
     };
+
+    let screenOrientationPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+    console.log(screenOrientationPortrait)
+    let gradientDeg;
+    if (screenOrientationPortrait === true) {
+      gradientDeg = "180deg";
+    } else {
+      gradientDeg = "90deg";
+    }
   
     return (
       <div className="carousel">
-        <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
-          <i className="bi bi-arrow-left-short"></i>
-        </button>
-        <div className="carousel-slides">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
-              style={{ 
-                transform: `translateX(${(index - carouselIndex) * 100}%)`,
-                background: `linear-gradient(90deg, rgba(255,255,255,0) 0%, `+ slide.color +` 25%, #3A4651 75%)`
-               }}
-            >
-              <img src={slide.image} alt={slide.title} />
-              <h2>
-                {slide.title}
-              </h2>
-              
-              <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
-                <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
-                  {/* <i className="bi bi-plus"></i> */}
-                  +
-                </button>
-                <span className='carousel-divider'></span>
-                <div className='carousel-info'>
-                  {slide.text}
+          <div className="carousel-slides">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={`carousel-slide ${index === carouselIndex ? 'active' : ''}`}
+                style={{ 
+                  transform: `translateX(${(index - carouselIndex) * 100}%)`,
+                  background: `linear-gradient(`+ gradientDeg +`, rgba(255,255,255,0) 0%, `+ slide.color +` 25%, #3A4651 75%)`
+                }}
+              >
+                <img src={slide.image} alt={slide.title} />
+                <h2>
+                  {slide.title}
+                </h2>
+                
+                <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
+                  <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
+                    {/* <i className="bi bi-plus"></i> */}
+                    +
+                  </button>
+                  <span className='carousel-divider'></span>
+                  <div className='carousel-info'>
+                    {slide.text}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
-          <i className="bi bi-arrow-right-short"></i>
-        </button>
-        <div className="carousel-pagination">
-          {/* Mettre les logos a la place des boutons */}
-          {slides.map((slide, index) => (
-            <button
-              key={index}
-              className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
-              onClick={() => goToSlide(index)}
-            >
-              <img src={slide.image} alt={slide.title}/>
-            </button>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
+            <i className="bi bi-arrow-left-short"></i>
+          </button>
+
+          <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
+            <i className="bi bi-arrow-right-short"></i>
+          </button>
+
+          <div className="carousel-pagination">
+            {/* Mettre les logos a la place des boutons */}
+            {slides.map((slide, index) => (
+              <button
+                key={index}
+                className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
+                onClick={() => goToSlide(index)}
+              >
+                <img src={slide.image} alt={slide.title}/>
+              </button>
+            ))}
+          </div>
       </div>
       
     );
-  }
+}
   
 
 export function Games(){
 
   // Utilisez useEffect pour simuler window.onload
   useEffect(() => {
-    document.getElementById("games-container").style.height = window.innerHeight + 'px';
-    
+    document.getElementById("games-container").style.height = window.innerHeight + 'px'; 
   });
 
     return(

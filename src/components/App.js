@@ -10,6 +10,9 @@ import { Network } from './Network';
 
 // function GlobalButtons( {setActiveItem}) {
 function GlobalButtons()  {
+
+  const location = useLocation();
+  const currentURL = location.pathname;
   
   // keyboard event
 
@@ -79,7 +82,6 @@ function GlobalButtons()  {
       }
     }
 
-
     // Ajout du press sur le btn cliqué
     for (let i = 0; i < navBtns.length; i++){
       if(navBtns[i].classList.contains('kich-btn-active')){
@@ -91,8 +93,16 @@ function GlobalButtons()  {
     btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');    
   }
 
-  const location = useLocation();
-  const currentURL = location.pathname;
+  // Utilisez useEffect pour simuler window.onload
+  useEffect(() => {
+    if(currentURL === "/reseaux" ){
+      document.getElementById("AppButtons").classList.add('NavChangedActive');
+    }else{
+      if (document.getElementById("AppButtons").classList.contains('NavChangedActive')) {
+        document.getElementById("AppButtons").classList.remove('NavChangedActive')
+      }
+    }
+  });
 
 
   
@@ -254,8 +264,7 @@ function GlobalButtons()  {
 function App() {
 
 
-  
-  
+
     return (
       // Doc : https://reactrouter.com/en/main
       <Router>

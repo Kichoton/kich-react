@@ -5,6 +5,7 @@ import logo_insta from '../assets/logo_networks/instagram.png'
 import logo_x from '../assets/logo_networks/x-logo.png'
 import logo_twitch from '../assets/logo_networks/twitch.png'
 import logo_kick from '../assets/logo_networks/kick.png'
+import logo_discord from '../assets/logo_networks/discord.svg'
 
 import '../style/Network.css'
 
@@ -50,6 +51,13 @@ export function Network(){
       logo: logo_kick,
       url: 'https://kick.com/kichoton',
       color: '#000'
+    },
+    {
+      index: 5,
+      title: 'Discord',
+      logo: logo_discord,
+      url: 'https://discord.gg/KuXbYdVKZC',
+      color: '#5865F2'
     },
 
   ];

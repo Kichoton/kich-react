@@ -1,13 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import '../style/Games.css'
 
+import logo_ac from '../assets/logo_games/Animal_Crossing.png'
+import logo_lol from '../assets/logo_games/lol.svg'
+import logo_tft from '../assets/logo_games/TFT.png'
+import logo_tm from '../assets/logo_games/TM.png'
+import logo_valorant from '../assets/logo_games/Valorant.png'
+
 
 export function Carousel() {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const slides = [
       {
         title: 'Valorant',
-        image: 'https://logodownload.org/wp-content/uploads/2020/06/valorant-logo-1.png',
+        image: logo_valorant,
         text: (
           <p>
             Valorant est un jeu vidéo free-to-play de tir à la première personne en multijoueur développé et édité par Riot Games et sorti le 2 juin 2020.
@@ -17,7 +23,7 @@ export function Carousel() {
       },
       {
         title: 'Teamfight Tactics',
-        image: 'https://static.riot-esports.fr/uploads/_AUTOxAUTO_crop_center-center_75_none/tft-bug-render-gold_200507_131909.png',
+        image: logo_tft,
         text: (
           <p>
             Teamfight Tactics (abrégé TFT, parfois Combat Tactique (abrégé CT) en français) est un jeu vidéo de type auto battler développé et édité par Riot Games. Il prend place dans l'univers de League of Legends et est basé sur le jeu Dota Auto Chess (en), où le joueur affronte sept adversaires en ligne, qu'il doit combattre en formant une équipe afin d'être le dernier à rester en vie.
@@ -27,13 +33,23 @@ export function Carousel() {
       },
       {
         title: 'League Of Legends',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png',
+        image: logo_lol,
         text: (
           <p>
             Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés.
           </p>
         ),
         color: '#001A6C'
+      },
+      {
+        title: 'Trackmania',
+        image: logo_tm,
+        text: (
+          <p>
+            Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés.
+          </p>
+        ),
+        color: '#7DEEAE'
       },
   
     ];

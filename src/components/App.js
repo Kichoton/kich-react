@@ -13,39 +13,78 @@ function GlobalButtons()  {
 
   const location = useLocation();
   const currentURL = location.pathname;
-  
-  // keyboard event
 
-  // TODO :
-  // Changer les fleches pas zqsd et voir si oon peut avoir l'info sur la langue du clavier (afficher la langue du clavier dans la console)
-  
+  const navigator = window.navigator;
+  const languages = navigator.languages;
+  const currentLanguage = languages[0];
+
+  // keyboard event
   useEffect(() => {
     const handleKeyDown = (event) => {
+      // Gestion des btn de navigation en fonction de la langue du clavier
+      if (currentLanguage === "fr-FR") {
+        switch (event.key) {
+          case "z":
+            document.getElementById('kich').click();
+            break;
+          case "s":
+            document.getElementById('home').click();
+            break;
+          case "d":
+            document.getElementById('games').click();
+            break;
+          case "q":
+            document.getElementById('network').click();
+            break;
+            default:
+            break;
+        }
+      }else{
+        switch (event.key) {
+          case "w":
+            document.getElementById('kich').click();
+            break;
+          case "s":
+            document.getElementById('home').click();
+            break;
+          case "d":
+            document.getElementById('games').click();
+            break;
+          case "a":
+            document.getElementById('network').click();
+            break;
+            default:
+              break;
+          }
+      } 
+      // Gestion des autres btn du site
       switch (event.key) {
-        case "ArrowUp":
-          document.getElementById('kich').click();
-          break;
-          case "ArrowDown":
-          document.getElementById('home').click();
-          break;
-          case "ArrowRight":
-          document.getElementById('games').click();
-          break;
-        case "ArrowLeft":
-          document.getElementById('network').click();
-          break;
         case "i":
           document.getElementById('footer').click();
           break;
         case "+":
-          if(!document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
-            document.getElementById('carousel-see-more-btn').click();
-          };
+          if(currentURL === "/jeux"){
+            if(!document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+              document.getElementById('carousel-see-more-btn').click();
+            };
+          }
           break;
         case "-":
-          if(document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
-            document.getElementById('carousel-see-more-btn').click();
-          };
+          if(currentURL === "/jeux"){
+            if(document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+              document.getElementById('carousel-see-more-btn').click();
+            };
+          }
+          break;
+        case "ArrowRight":
+          if(currentURL === "/jeux"){
+            document.getElementById('carousel-next-button').click();
+          }
+          break;
+        case "ArrowLeft":
+          if(currentURL === "/jeux"){
+            document.getElementById('carousel-prev-button').click();
+          }
           break;
         default:
           break;
@@ -57,12 +96,13 @@ function GlobalButtons()  {
     };
   }, []);
   
+  //  Btn globaux (Nav = footer)
   let navBtns = document.getElementsByClassName('kich-nav');
   
+  // Appartition du footer
   function handleFooterClick(event){
     let footerBtn = document.getElementById(event.currentTarget.id);
     let footerContainer = document.getElementById("footer-container");
-
     if(footerBtn.parentElement.parentElement.classList.contains('kich-btn-active')){
       footerContainer.classList.remove("footer-active");
       footerBtn.parentElement.parentElement.classList.remove('kich-btn-active');
@@ -72,8 +112,9 @@ function GlobalButtons()  {
     }
   }
 
+  // Event de clique pour les 4 btns de nav 
   function handleNavClick(event){
-
+    // Decalage de la navbar pour la page network
     if(event.currentTarget.id === "network" ){
       document.getElementById("AppButtons").classList.add('NavChangedActive');
     }else{
@@ -82,7 +123,7 @@ function GlobalButtons()  {
       }
     }
 
-    // Ajout du press sur le btn cliqué
+    // Ajout de l'effet de Press
     for (let i = 0; i < navBtns.length; i++){
       if(navBtns[i].classList.contains('kich-btn-active')){
         navBtns[i].classList.remove('kich-btn-active');
@@ -92,21 +133,10 @@ function GlobalButtons()  {
     let btnNavClicked = document.getElementById(event.currentTarget.id);
     btnNavClicked.parentElement.parentElement.classList.add('kich-btn-active');    
   }
-
-  // Utilisez useEffect pour simuler window.onload
-  useEffect(() => {
-    if(currentURL === "/reseaux" ){
-      document.getElementById("AppButtons").classList.add('NavChangedActive');
-    }else{
-      if (document.getElementById("AppButtons").classList.contains('NavChangedActive')) {
-        document.getElementById("AppButtons").classList.remove('NavChangedActive')
-      }
-    }
-  });
-
-
   
+  // Initialisation de la taille mini pour le changement dynamique des icons
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 500);
+  // Creation initial des btn
   const [icons, setIcons] = useState({
     kich: '',
     games: '',
@@ -114,6 +144,7 @@ function GlobalButtons()  {
     home: '',
   });
   
+  // Logique du changement d'icones en fonction de la taille de la page
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
@@ -125,136 +156,111 @@ function GlobalButtons()  {
       }
     };
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [isSmallScreen]);
-
-
+  
+  // Ativation du changement d'icones en fonction de la taille de la page
   useEffect(() => {
     updateIcons(isSmallScreen);
   }, [isSmallScreen]);
 
+  // Assignation des contenus du bouton en fonction de la taille de la page 
   const updateIcons = (isSmallScreen) => {
     if (isSmallScreen) {
       setIcons({
-        kich: 'bi bi-person-vcard',
-        games: 'bi bi-controller',
-        network: 'bi bi-link',
-        home: 'bi bi-house-fill'
+        kich: '<i class="bi bi-person-vcard"></i>',
+        games: '<i class="bi bi-controller"></i>',
+        network: '<i class="bi bi-link"></i>',
+        home: '<i class="bi bi-house-fill"></i>'
       });
     } else {
-      setIcons({
-        kich: 'bi bi-caret-up-fill',
-        games: 'bi bi-caret-right-fill',
-        network: 'bi bi-caret-left-fill',
-        home: 'bi bi-house-fill'
-      });
+      if (currentLanguage === "fr-FR") {
+        setIcons({
+          // z q s d
+          kich: '<span class="kich-btn-letter">Z</span>',
+          games: '<span class="kich-btn-letter">D</span>',
+          network: '<span class="kich-btn-letter">Q</span>',
+          home: '<span class="kich-btn-letter">S</span>'
+        });
+      } else {
+        // le clavier est en anglais ou une autre langue
+        setIcons({
+          // w a s d
+          kich: '<span class="kich-btn-letter">W</span>',
+          games: '<span class="kich-btn-letter">D</span>',
+          network: '<span class="kich-btn-letter">A</span>',
+          home: '<span class="kich-btn-letter">S</span>',
+        });
+      }
     }
   };
 
+  // Définition des 4 btn de nav
   const buttons = [
-    { key: 0, id: "kich", label: icons.kich, url: '/kichoton'},
-    { key: 1, id: "games", label: icons.games, url: '/jeux'},
-    { key: 2, id: "network", label: icons.network, url: '/reseaux'},
-    { key: 3, id: "home", label: icons.home, url: '/'},
-  ];
+    { key: 0, id: "kich", title: "Kichoton", label: icons.kich,  url: '/kichoton'},
+    { key: 1, id: "games", title: "Games", label: icons.games,  url: '/jeux'},
+    { key: 2, id: "network", title: "Réseaux", label: icons.network,  url: '/reseaux'},
+    { key: 3, id: "home", title: "", label: icons.home,  url: '/'},
+  ]; 
+
+  // Utilisez useEffect pour simuler window.onload pour lancer les fonction quand la fenetre est load
+  useEffect(() => {
+    if(currentURL === "/reseaux" ){
+      document.getElementById("AppButtons").classList.add('NavChangedActive');
+    }else{
+      if (document.getElementById("AppButtons").classList.contains('NavChangedActive')) {
+        document.getElementById("AppButtons").classList.remove('NavChangedActive')
+      }
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].innerHTML = buttons[i].id;
+      let button = document.getElementById(buttons[i].id);
+      button.innerHTML = buttons[i].label
+    }
+
+  });
 
   return(
     <div id="AppButtons">
 
       <div id='footer-container' className="">
-        <p>développé par <a href="https://theosaez.com">Théo Saez</a></p>
+        <p>développé par <i className="fa fa-home"></i> <a href="https://theosaez.com">Théo Saez</a></p>
+       
+
         <span className="triangle-footer"></span>
       </div>
 
       <span id="footer-btn" className="kich-btn">
           <span className="kich-btn-bg">
-              <button id="footer" className="kich-btn-touch" onClick={handleFooterClick}>
+              <button id="footer" className="kich-btn-touch" onClick={handleFooterClick} aria-label="Open footer">
                 <i className="bi bi-info-lg"></i>
               </button>
           </span>
       </span>
 
       <nav className="nav-btn-container">
-        <span id="nav-btn-kich" className={`kich-btn kich-nav ${currentURL === buttons[0].url ? 'kich-btn-active' : ''}`}>
+
+        {buttons.map((button) => (
+          <span id={`nav-btn-${button.id}`} className={`kich-btn kich-nav ${currentURL === button.url ? 'kich-btn-active' : ''}`}>
             <span className="kich-btn-bg">
               
                 <Link
-                  key={buttons[0].key}
-                  id={buttons[0].id}
-                  to={buttons[0].url}
+                  id={button.id}
+                  key={button.key}
+                  to={button.url}
                   className="kich-btn-touch"
                   onClick={handleNavClick}
                 >
-                  <i className={buttons[0].label}></i>
-                  {/* {buttons[0].label} */}
-                </Link>
-              
-                {/* 
-                  <Link to="/kichoton" id="kich" className="kich-btn-touch" onClick={handleNavClick}>
-                      <i className="bi bi-caret-up-fill"></i>
-                  </Link>
-                 */}
-            </span>
-            <p className="kich-btn-title">Kichoton</p>
-        </span>
-        <span id="nav-btn-games" className={`kich-btn kich-nav ${currentURL === buttons[1].url ? 'kich-btn-active' : ''}`}>
-            <span className="kich-btn-bg">
-                {/* <button id="games" className="kich-btn-touch" onClick={() => setActiveItem('games')}> */}
-                {/* <button id="games" className="kich-btn-touch" onClick={handleNavClick}> */}
-                {/* <Link to="/jeux" id="games" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-right-fill"></i>
-                </Link> */}
-                 <Link
-                  key={buttons[1].key}
-                  id={buttons[1].id}
-                  to={buttons[1].url}
-                  className="kich-btn-touch"
-                  onClick={handleNavClick}
-                >
-                  <i className={buttons[1].label}></i>
+                
+
                 </Link>
             </span>
-            <p className="kich-btn-title">Jeux</p>
-        </span>
-        <span id="nav-btn-network" className={`kich-btn kich-nav ${currentURL === buttons[2].url ? 'kich-btn-active' : ''}`}>
-            <span className="kich-btn-bg">
-                {/* <button id="network" className="kich-btn-touch" onClick={() => setActiveItem('network')}> */}
-                {/* <Link to="/reseaux" id="network" className="kich-btn-touch" onClick={handleNavClick}>
-                    <i className="bi bi-caret-left-fill"></i>
-                </Link> */}
-                <Link
-                  key={buttons[2].key}
-                  id={buttons[2].id}
-                  to={buttons[2].url}
-                  className="kich-btn-touch"
-                  onClick={handleNavClick}
-                >
-                  <i className={buttons[2].label}></i>
-                </Link>
-            </span>
-            <p className="kich-btn-title">Réseaux</p>
-        </span>
-        <span id="nav-btn-home" className={`kich-btn kich-nav ${currentURL === buttons[3].url ? 'kich-btn-active' : ''}`}>
-            <span className="kich-btn-bg">
-                {/* <button id="home" className="kich-btn-touch" onClick={() => setActiveItem('home')}> */}
-                {/* <Link to="/" id="home" className="kich-btn-touch" onClick={handleNavClick}>
-                  <i className="bi bi-house-down-fill"></i>
-                </Link> */}
-                <Link
-                  key={buttons[3].key}
-                  id={buttons[3].id}
-                  to={buttons[3].url}
-                  className="kich-btn-touch"
-                  onClick={handleNavClick}
-                >
-                  <i className={buttons[3].label}></i>
-                </Link>
-            </span>
-            {/* <p className="kich-btn-title">Accueil</p> */}
-        </span>
+            <p className="kich-btn-title">{button.title}</p>
+          </span>
+        ))}
       </nav>
 
     </div>
@@ -262,9 +268,6 @@ function GlobalButtons()  {
 }
 
 function App() {
-
-
-
     return (
       // Doc : https://reactrouter.com/en/main
       <Router>
@@ -274,7 +277,7 @@ function App() {
           <GridBackground/>
 
           <Routes>
-            <Route exact path="/" element={<Home/>} />
+            <Route path="/" element={<Home/>} />
             <Route path="/kichoton" element={<Kich/>} />
             <Route path="/jeux" element={<Games/>} />
             <Route path="/reseaux" element={<Network/>} />
@@ -284,8 +287,6 @@ function App() {
         </div>
       </Router>
     );
-  
-  
 }
 
 export default App;

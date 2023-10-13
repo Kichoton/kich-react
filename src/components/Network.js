@@ -10,6 +10,10 @@ import logo_discord from '../assets/logo_networks/discord.svg'
 import '../style/Network.css'
 
 export function Network(){
+
+  useEffect(() => {
+    document.title = "Kichoton - Réseaux";
+  });
     
   useEffect(() => {
     document.getElementById("network-container").style.height = window.innerHeight + 'px';

@@ -18,9 +18,19 @@ function GlobalButtons()  {
   const languages = navigator.languages;
   const currentLanguage = languages[0];
 
-  // keyboard event
+  // keyboard global event
   useEffect(() => {
     const handleKeyDown = (event) => {
+
+      // Gestion du btn du footer
+      switch (event.key) {
+        case "i":
+          document.getElementById('footer').click();
+          break;
+        default:
+          break;
+      }
+      
       // Gestion des btn de navigation en fonction de la langue du clavier
       if (currentLanguage === "fr-FR") {
         switch (event.key) {
@@ -57,44 +67,12 @@ function GlobalButtons()  {
               break;
           }
       } 
-      // Gestion des autres btn du site
-      switch (event.key) {
-        case "i":
-          document.getElementById('footer').click();
-          break;
-        case "+":
-          if(currentURL === "/jeux"){
-            if(!document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
-              document.getElementById('carousel-see-more-btn').click();
-            };
-          }
-          break;
-        case "-":
-          if(currentURL === "/jeux"){
-            if(document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
-              document.getElementById('carousel-see-more-btn').click();
-            };
-          }
-          break;
-        case "ArrowRight":
-          if(currentURL === "/jeux"){
-            document.getElementById('carousel-next-button').click();
-          }
-          break;
-        case "ArrowLeft":
-          if(currentURL === "/jeux"){
-            document.getElementById('carousel-prev-button').click();
-          }
-          break;
-        default:
-          break;
-      }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  });
   
   //  Btn globaux (Nav = footer)
   let navBtns = document.getElementsByClassName('kich-nav');
@@ -149,21 +127,20 @@ function GlobalButtons()  {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
       const newIsSmallScreen = screenWidth <= 500;
-
+  
       if (newIsSmallScreen !== isSmallScreen) {
         setIsSmallScreen(newIsSmallScreen);
         updateIcons(newIsSmallScreen);
       }
     };
+  
     window.addEventListener('resize', handleResize);
+    updateIcons(isSmallScreen);
+  
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isSmallScreen]);
-  
-  // Ativation du changement d'icones en fonction de la taille de la page
-  useEffect(() => {
-    updateIcons(isSmallScreen);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSmallScreen]);
 
   // Assignation des contenus du bouton en fonction de la taille de la page 

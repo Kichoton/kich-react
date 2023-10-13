@@ -8,7 +8,40 @@ import logo_tm from '../assets/logo_games/TM.png'
 import logo_valorant from '../assets/logo_games/Valorant.png'
 
 
+
 export function Carousel() {
+
+  // keyboard carousel event
+    useEffect(() => {
+      const handleKeyDown = (event) => {
+        // Gestion des btn de la page des jeux 
+          switch (event.key) {
+            case "+":
+              if(!document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+                document.getElementById('carousel-see-more-btn').click();
+              };
+              break;
+            case "-":
+              if(document.getElementById('carousel-see-more-btn').parentElement.classList.contains('carousel-see-more-active')){
+                document.getElementById('carousel-see-more-btn').click();
+              };
+              break;
+            case "ArrowRight":
+                document.getElementById('carousel-next-button').click();
+              break;
+            case "ArrowLeft":
+                document.getElementById('carousel-prev-button').click();
+              break;
+            default:
+              break;
+          }
+      };
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }, []);
+
     const [carouselIndex, setCarouselIndex] = useState(0);
     const slides = [
       {
@@ -46,10 +79,21 @@ export function Carousel() {
         image: logo_tm,
         text: (
           <p>
-            Le mode principal du jeu voit s'affronter deux équipes de 5 joueurs en temps réel dans des parties d'une durée d'environ une demi-heure, chaque équipe occupant et défendant sa propre base sur la carte. Chacun des dix joueurs contrôle un personnage à part entière parmi les plus de 150 qui sont proposés.
+            TrackMania est une franchise de jeux de course atypiques typés arcade qui proposent des pistes peu conventionnelles, avec des virages très relevés, des tremplins et des loopings         
           </p>
         ),
         color: '#7DEEAE'
+      },
+      {
+        title: 'Animal Crossing',
+        image: logo_ac,
+        text: (
+          <p>
+            Animal Crossing est une série de jeux vidéo de simulation de vie développée par Nintendo dans laquelle le joueur emménage dans un village habité par des animaux anthropomorphes.    
+            La série est notable pour son système de jeu de type sandbox (sans objectif précis et faisant appel à la curiosité et à la créativité du joueur) et pour son utilisation étendue de l'horloge et du calendrier de la console qui simulent un déroulement en temps réel, ce qui modifie le contenu du jeu en fonction de l'heure, du jour de la semaine et de la date auxquels joue le joueur.        
+          </p>
+        ),
+        color: '#c48d3f'
       },
   
     ];
@@ -106,7 +150,7 @@ export function Carousel() {
                   background: `linear-gradient(`+ gradientDeg +`, rgba(255,255,255,0) 0%, `+ slide.color +` 25%, #3A4651 75%)`
                 }}
               >
-                <img src={slide.image} alt={slide.title} />
+                <img className='carousel-img' src={slide.image} alt={slide.title} />
                 <h2>
                   {slide.title}
                 </h2>
@@ -150,8 +194,11 @@ export function Carousel() {
     );
 }
   
-
 export function Games(){
+
+  useEffect(() => {
+    document.title = "Kichoton - Jeux";
+  });
 
   // Utilisez useEffect pour simuler window.onload
   useEffect(() => {

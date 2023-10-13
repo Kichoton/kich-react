@@ -7,55 +7,54 @@
     /* background-color: #fff; */
     position: relative;
     /* width: 100vw; */
-  }
-  
-  .kich-container h1{
-    font-family: HkGrotesk;
-    text-align: center;
-  
-    padding-top: 30vh;
-    padding-bottom: 30vh;
-  
-  }
-  
-  .kich-theo{
-    filter: drop-shadow(0 0 0.75rem #0000008a);
-    position: relative;
-    background-color: #ffffffcb ;
-    padding-left: 5vw;
-    padding-right: 5vw;  
-    padding-top: 5vh;  
-    padding-bottom: 5vh;  
-    color : #006EF2;
-  }
-  
-  .kich-theo > hr{
-    width: 50%;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-  }
-  
-  .triangle-theo-top{
-    position: absolute;
-    transform: translateY(-100%);
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 50px 0 0 100vw;
-    border-color: transparent transparent transparent #ffffffcb;
-  }
-  
-  .triangle-theo-bot{
-    position: absolute;
-    transform: translateY(100%);
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 100vw 50px 0;
-    border-color: transparent #ffffffcb transparent transparent;  
-  }
+}
+
+.kich-container h1{
+  text-align: center;
+
+  padding-top: 30vh;
+  padding-bottom: 30vh;
+
+}
+
+.kich-theo{
+  filter: drop-shadow(0 0 0.75rem #0000008a);
+  position: relative;
+  background-color: #ffffffcb ;
+  padding-left: 5vw;
+  padding-right: 5vw;  
+  padding-top: 5vh;  
+  padding-bottom: 5vh;  
+  color : #006EF2;
+}
+
+.kich-theo > hr{
+  width: 50%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.triangle-theo-top{
+  position: absolute;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 0 0 100vw;
+  border-color: transparent transparent transparent #ffffffcb;
+}
+
+.triangle-theo-bot{
+  position: absolute;
+  transform: translateY(100%);
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 100vw 50px 0;
+  border-color: transparent #ffffffcb transparent transparent;  
+}
   

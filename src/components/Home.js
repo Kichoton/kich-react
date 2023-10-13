@@ -4,6 +4,10 @@ import { useEffect } from 'react';
 
 export function Home()
 {
+
+  useEffect(() => {
+    document.title = "Kichoton";
+  });
     // Utilisez useEffect pour simuler window.onload
     useEffect(() => {
       document.getElementById("hp-container").style.height = window.innerHeight + 'px';

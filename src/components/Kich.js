@@ -1,6 +1,11 @@
 import '../style/Kich.css'
+import { useEffect } from 'react'
+
 
 export function Kich(){
+  useEffect(() => {
+    document.title = "Kichoton ??";
+  });
     return(
       <main className="kich-container">
         <h1>Kichoton c'est ...</h1>
@@ -10,7 +15,6 @@ export function Kich(){
            <p>... moi, Théo Saez, un streameur Francais, recemment arrivé a Montréal.</p>
           <p>L'aventure Twitch débute en 2022 sur la plateforme Twitch.</p>
           <p>L'objectif de cette chaine est de se détendre, jouer entre amis, se détendre grace a des mates tous aussi drole, serieux, tryhardeur les uns que les autres.</p>
-          <p>Depuis 2023, l'aventure se poursuit sur la plateforme Kick.com</p>
           <hr></hr>
   
           <p>Passionné de jeux vidéos, le streaming permet de partager cet amour, mais également de partager ou faire découvrir d'autre centres d'interets tel que le BMX</p>

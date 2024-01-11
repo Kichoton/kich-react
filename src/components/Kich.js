@@ -1,8 +1,45 @@
 import '../style/Kich.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+import { TwitchEmbed } from 'react-twitch-embed';
 
 
 export function Kich(){
+
+  const getToken = async () => {
+    try {
+      const response = await axios.post('https://id.twitch.tv/oauth2/token', {
+        client_id: 'bvy2j0ditfmlrbgya2zkqzn4uqr8dx',
+        client_secret: 'sh10nm4rdvtt5sdajtj2kai9as6ovq',
+        grant_type: 'client_credentials'
+      });
+  
+      return response.data.access_token;
+    } catch (error) {
+      console.error(error);
+    }
+  }; 
+
+  const [subs, setSubs] = useState(0);
+
+  useEffect(() => {
+    const fetchSubs = async () => {
+      // Utilisez l'API Twitch pour récupérer le nombre de subs
+      const token = await getToken();
+      const response = await fetch('https://api.twitch.tv/helix/subscriptions?broadcaster_id=Kichoton_', {
+        headers: {
+          'Client-ID': 'bvy2j0ditfmlrbgya2zkqzn4uqr8dx',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+      const data = await response.json();
+      setSubs(data.total);
+    };
+
+    fetchSubs();
+  }, []);
+
+
   useEffect(() => {
     document.title = "Kichoton ??";
   });
@@ -19,6 +56,18 @@ export function Kich(){
   
           <p>Passionné de jeux vidéos, le streaming permet de partager cet amour, mais également de partager ou faire découvrir d'autre centres d'interets tel que le BMX</p>
         </div>
+
+        <div className='kich-stream'>
+          <TwitchEmbed
+            channel="Kichoton_"
+            id="twitch-embed"
+            theme="dark"
+          />
+        </div>
+
+
+
       </main>
+      
     )
   }

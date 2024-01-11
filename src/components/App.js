@@ -6,6 +6,7 @@ import { Home } from './Home';
 import { Kich } from './Kich';
 import { Games } from './Games';
 import { Network } from './Network';
+import { NotFound } from './NotFound';
 
 
 // function GlobalButtons( {setActiveItem}) {
@@ -258,6 +259,8 @@ function App() {
             <Route path="/kichoton" element={<Kich/>} />
             <Route path="/jeux" element={<Games/>} />
             <Route path="/reseaux" element={<Network/>} />
+            {/* Page 404 */}
+            <Route path="*" element={<NotFound/>} />
           </Routes>
           
           <GlobalButtons />

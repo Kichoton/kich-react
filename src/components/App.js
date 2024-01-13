@@ -1,4 +1,9 @@
 import '../style/App.css';
+import icon_controller from '../assets/icons/game-controller-light.svg';
+import icon_home from '../assets/icons/house-fill.svg';
+import icon_link from '../assets/icons/link-light.svg';
+import icon_user from '../assets/icons/user-light.svg';
+import icon_info from '../assets/icons/info.svg';
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { GridBackground, ColoredBackground } from './Background';
@@ -148,10 +153,10 @@ function GlobalButtons()  {
   const updateIcons = (isSmallScreen) => {
     if (isSmallScreen) {
       setIcons({
-        kich: '<i class="bi bi-person-vcard"></i>',
-        games: '<i class="bi bi-controller"></i>',
-        network: '<i class="bi bi-link"></i>',
-        home: '<i class="bi bi-house-fill"></i>'
+        kich: '<img src='+ icon_user +'></img>',
+        games: '<img src='+ icon_controller +'></img>',
+        network: '<img src='+ icon_link +'></img>',
+        home: '<img src='+ icon_home +'></img>'
       });
     } else {
       if (currentLanguage === "fr-FR") {
@@ -205,7 +210,7 @@ function GlobalButtons()  {
     <div id="AppButtons">
 
       <div id='footer-container' className="">
-        <p>développé par <i className="fa fa-home"></i> <a href="https://theosaez.com">Théo Saez</a></p>
+        <p>développé par <a href="https://theosaez.com">Théo Saez</a></p>
        
 
         <span className="triangle-footer"></span>
@@ -214,7 +219,7 @@ function GlobalButtons()  {
       <span id="footer-btn" className="kich-btn">
           <span className="kich-btn-bg">
               <button id="footer" className="kich-btn-touch" onClick={handleFooterClick} aria-label="Open footer">
-                <i className="bi bi-info-lg"></i>
+                <img alt='information icon' src={icon_info}></img>
               </button>
           </span>
       </span>
@@ -232,7 +237,6 @@ function GlobalButtons()  {
                   className="kich-btn-touch"
                   onClick={handleNavClick}
                 >
-                
 
                 </Link>
             </span>

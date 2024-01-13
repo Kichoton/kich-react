@@ -2,6 +2,8 @@ import '../style/Kich.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { TwitchEmbed } from 'react-twitch-embed';
+import icon_heart from '../assets/icons/heart-straight.svg';
+import icon_star from '../assets/icons/star.svg';
 
 
 export function Kich(){
@@ -62,20 +64,20 @@ export function Kich(){
             <span id="btn-follow" className="kich-btn kich-btn-current">
               <span className="kich-btn-bg">
                   <a href='https://www.twitch.tv/kichoton_' target='_blank' rel='noreferrer' id="follow" className="kich-btn-touch" aria-label="Open">
-                    Suivre
+                    <img alt='information icon' src={icon_heart}></img>&nbsp;Suivre
                   </a>
               </span>
             </span>
             <span id="btn-sub" className="kich-btn kich-btn-current">
               <span className="kich-btn-bg">
                   <a href='https://www.twitch.tv/subs/kichoton_' target='_blank' rel='noreferrer' id="sub" className="kich-btn-touch" aria-label="Open">
-                    Abonnement
+                    <img alt='information icon' src={icon_star}></img>&nbsp;Abonnement
                   </a>
               </span>
             </span>
           </span>
         </div>
-        
+
         <div className='kich-stream'>
           <TwitchEmbed
             channel="Kichoton_"

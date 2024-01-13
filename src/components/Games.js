@@ -7,6 +7,11 @@ import logo_tft from '../assets/logo_games/TFT.png'
 import logo_tm from '../assets/logo_games/TM.png'
 import logo_valorant from '../assets/logo_games/Valorant.png'
 
+import icon_right from '../assets/icons/arrow-fat-right.svg';
+import icon_left from '../assets/icons/arrow-fat-left.svg';
+import icon_plus from '../assets/icons/plus.svg';
+import icon_minus from '../assets/icons/minus.svg';
+
 
 
 export function Carousel() {
@@ -121,10 +126,10 @@ export function Carousel() {
       setIsExpanded(!isExpanded);
       if (isExpanded === true) {
         console.log(isExpanded)
-        document.getElementById('carousel-see-more-btn').innerHTML = '+';
+        document.getElementById('carousel-see-more-btn').innerHTML = '<img alt="" src='+icon_plus+'></img>';
       }else{
         console.log(isExpanded)
-        document.getElementById('carousel-see-more-btn').innerHTML = '-';
+        document.getElementById('carousel-see-more-btn').innerHTML = '<img alt="" src='+icon_minus+'></img>';
       }
     };
 
@@ -158,7 +163,7 @@ export function Carousel() {
                 <div className={`carousel-see-more ${isExpanded ? 'carousel-see-more-active' : ''}`}>
                   <button  id={`${index === carouselIndex ? 'carousel-see-more-btn' : ''}`} onClick={handleSeeMore}>
                     {/* <i className="bi bi-plus"></i> */}
-                    +
+                    <img alt="" src={icon_plus} ></img>
                   </button>
                   <span className='carousel-divider'></span>
                   <div className='carousel-info'>
@@ -170,20 +175,20 @@ export function Carousel() {
           </div>
 
           <button id='carousel-prev-button' className="carousel-button" onClick={goToPrevious}>
-            <i className="bi bi-arrow-left-short"></i>
+            <img alt='' src={icon_left}></img>
           </button>
 
           <button id='carousel-next-button' className="carousel-button" onClick={goToNext}>
-            <i className="bi bi-arrow-right-short"></i>
+            <img alt='' src={icon_right}></img>
           </button>
 
           <div className="carousel-pagination">
             {/* Mettre les logos a la place des boutons */}
             {slides.map((slide, index) => (
               <button
-                key={index}
-                className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
-                onClick={() => goToSlide(index)}
+              key={index}
+              className={`pagination-dot ${index === carouselIndex ? 'pagination-active' : ''}`}
+              onClick={() => goToSlide(index)}
               >
                 <img src={slide.image} alt={slide.title}/>
               </button>

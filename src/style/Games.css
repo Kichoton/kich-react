@@ -36,7 +36,7 @@
   top:50%;
 }
 
-.carousel-button .bi{
+.carousel-button img{
   position: absolute;
   left:50%;
   top:50%;
@@ -88,7 +88,7 @@
   transform: rotate(90deg);
 }
 
-.carousel-slide img {
+.carousel-slide .carousel-img {
   max-width:25%;
   max-height:50%;
   width: auto;

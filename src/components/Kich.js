@@ -49,14 +49,33 @@ export function Kich(){
         <div className="kich-theo">
           <span className='triangle-theo-top'></span>
           <span className='triangle-theo-bot'></span>
-           <p>... moi, Théo Saez, un streameur Francais, recemment arrivé a Montréal.</p>
-          <p>L'aventure Twitch débute en 2022 sur la plateforme Twitch.</p>
-          <p>L'objectif de cette chaine est de se détendre, jouer entre amis, se détendre grace a des mates tous aussi drole, serieux, tryhardeur les uns que les autres.</p>
-          <hr></hr>
-  
-          <p>Passionné de jeux vidéos, le streaming permet de partager cet amour, mais également de partager ou faire découvrir d'autre centres d'interets tel que le BMX</p>
-        </div>
+           <p>... moi, Théo Saez, un streameur originaire de Bordeaux en France et recemment arrivé a Montréal.</p>
+          <p>L'aventure a débuté en 2022 sur la plateforme Twitch et se poursuit doucement accompagné de mes copains avec des streams les mercredi, vendredi et dimanche matin.</p>
+          <p>L'objectif de cette chaine est clair <strong>le fun</strong>.</p>
+          <p>Vous allez pouvoir me suivre évoluer sur des jeux comme Rocket League, Call of Duty, League of Legends.</p>
+          <p>Mais également pouvoir discuter avec nous de sujet en tout genre et pourquoi pas créer quelques evenements...</p>
+          <p>Passionné de jeux vidéos, de nouvelles-technologies cette chaine sera l'occasion d'échanger, de discuter et de partager au max.</p>
 
+          <hr></hr>
+          <span className='btn-twitch-container'>
+
+            <span id="btn-follow" className="kich-btn kich-btn-current">
+              <span className="kich-btn-bg">
+                  <a href='https://www.twitch.tv/kichoton_' target='_blank' rel='noreferrer' id="follow" className="kich-btn-touch" aria-label="Open">
+                    Suivre
+                  </a>
+              </span>
+            </span>
+            <span id="btn-sub" className="kich-btn kich-btn-current">
+              <span className="kich-btn-bg">
+                  <a href='https://www.twitch.tv/subs/kichoton_' target='_blank' rel='noreferrer' id="sub" className="kich-btn-touch" aria-label="Open">
+                    Abonnement
+                  </a>
+              </span>
+            </span>
+          </span>
+        </div>
+        
         <div className='kich-stream'>
           <TwitchEmbed
             channel="Kichoton_"
@@ -64,6 +83,7 @@ export function Kich(){
             theme="dark"
           />
         </div>
+
 
 
 

@@ -89,6 +89,16 @@ body{
   transition: 1s ease; /* Transition de la largeur */
 }
 
+.kich-btn-current .kich-btn-touch{
+  width: 130px;
+  height: 40px;
+}
+
+.kich-btn-current  .kich-btn-bg{
+  width: 130px;
+  height: 40px;
+}
+
 .kich-btn{
    /* position: absolute; */
    background: none;
@@ -211,6 +221,7 @@ body{
   left:0;
   transform: translate(-125%, 50%);
 }
+
 /* bas */
 #nav-btn-home{
   grid-column-start: 2;
@@ -221,7 +232,6 @@ body{
   left: 70px; */
   /* transform: translate(-50%,0); */
 }
-
 
 @media screen and (max-width: 500px) {
   .kich-btn-title, .games-btn-title, .network-btn-title{

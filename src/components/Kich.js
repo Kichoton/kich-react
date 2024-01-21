@@ -51,12 +51,13 @@ export function Kich(){
         <div className="kich-theo">
           <span className='triangle-theo-top'></span>
           <span className='triangle-theo-bot'></span>
-           <p>... moi, Théo Saez, un streameur originaire de Bordeaux en France et recemment arrivé a Montréal.</p>
-          <p>L'aventure a débuté en 2022 sur la plateforme Twitch et se poursuit doucement accompagné de mes copains avec des streams les mercredi, vendredi et dimanche matin.</p>
-          <p>L'objectif de cette chaine est clair <strong>le fun</strong>.</p>
-          <p>Vous allez pouvoir me suivre évoluer sur des jeux comme Rocket League, Call of Duty, League of Legends.</p>
-          <p>Mais également pouvoir discuter avec nous de sujet en tout genre et pourquoi pas créer quelques evenements...</p>
-          <p>Passionné de jeux vidéos, de nouvelles-technologies cette chaine sera l'occasion d'échanger, de discuter et de partager au max.</p>
+          <p>... moi, Théo Saez, un streameur originaire de Bordeaux et récemment arrivé a Montréal.</p>
+          <p>L'aventure a débuté en 2022 sur la plateforme Twitch et se poursuit doucement, accompagné de mes copains, avec des streams les mercredis, vendredis et dimanches.</p>
+          <p>L'objectif de cette chaine est clair : <strong><u>le fun</u></strong>.</p>
+          <p>Vous allez pouvoir me voir évoluer sur des jeux comme Rocket League, Call of Duty, League of Legends et pleins d'autres.</p>
+          <p>Venez discuter avec nous de sujets en tout genre et pourquoi pas créer quelques événements...</p>
+          <p>Passionné de jeux vidéos et de nouvelles-technologies, cette chaine sera l'occasion d'échanger, de discuter et de partager au max.</p>
+
 
           <hr></hr>
           <span className='btn-twitch-container'>

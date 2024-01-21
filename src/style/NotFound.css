@@ -1,15 +1,60 @@
+
 .NotFound{
-    
 
     height: 100vh;
-    width: 100vw;
+
+    padding-left:35vw;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
 
 }
 
 .NotFound h1{
-    position: absolute; 
+    position: absolute;
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    
+    display:inline-block;
+    
+    transform: rotate(-90deg);
+    top: 15%;
+    left: -14%;
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+    font-size: 37rem;
 }
+
+.NotFound img{
+    height: auto;
+    width: 5rem
+}
+
+@media (orientation: portrait) {
+
+    .NotFound{
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+
+    .NotFound h1{
+        transform: rotate(0);
+        /* top: 50%; */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        color: transparent;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: white;
+        font-size: 33vw;
+        opacity: 0.3
+    }
+    
+}
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlnsDc="http://purl.org/dc/elements/1.1/"
+   xmlnsCc="http://creativecommons.org/ns#"
+   xmlnsRdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlnsSvg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlnsSodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlnsInkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="486.30801"
+   id="svg2628"
+   sodipodiVersion="0.32"
+   inkscapeVersion="0.91 r13725"
+   version="1.0"
+   sodipodiDocname="EA.svg"
+   inkscapeOutput_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs2630">
+    <inkscapePerspective
+       sodipodiType="inkscape:persp3d"
+       inkscapeVp_x="0 : 526.18109 : 1"
+       inkscapeVp_y="0 : 1000 : 0"
+       inkscapeVp_z="744.09448 : 526.18109 : 1"
+       inkscapePersp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective2636" />
+  </defs>
+  <sodipodiNamedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscapePageopacity="0.0"
+     inkscapePageshadow="2"
+     inkscapeZoom="0.5"
+     inkscapeCx="544.33668"
+     inkscapeCy="233.32008"
+     inkscapeDocument-units="px"
+     inkscapeCurrent-layer="layer1"
+     showgrid="false"
+     inkscapeWindow-width="1366"
+     inkscapeWindow-height="705"
+     inkscapeWindow-x="-8"
+     inkscapeWindow-y="-8"
+     inkscapeWindow-maximized="1" />
+  <metadata
+     id="metadata2633">
+    <rdfRDF>
+      <ccWork
+         rdfAbout="">
+        <dcFormat>image/svg+xml</dcFormat>
+        <dcType
+           rdfResource="http://purl.org/dc/dcmitype/StillImage" />
+        <dcTitle></dcTitle>
+      </ccWork>
+    </rdfRDF>
+  </metadata>
+  <g
+     inkscapeLabel="Layer 1"
+     inkscapeGroupmode="layer"
+     id="layer1"
+     transform="translate(-175.12634,-267.07553)">
+    <path
+       d="m 867.91758,267.07575 -246.27934,389.28988 -269.90232,0 62.20107,-95.7643 167.90548,0 60.94743,-97.00005 -374.37103,0 -60.94734,97.00005 89.54963,0 -121.89482,192.78219 502.49835,0 190.29289,-303.46551 69.65166,110.68332 -59.71163,0 -60.92959,95.7643 181.58874,0 60.94724,97.01789 115.6623,0 -307.20872,-486.30777"
+       style="fill:#fff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="path2416"
+       inkscapeConnector-curvature="0" />
+    <path
+       d="m 787.07217,270.80081 -396.75834,0 -60.94753,97.01815 396.75835,-1.23496 60.94752,-95.78245"
+       style="fill:#fff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="path2418"
+       inkscapeConnector-curvature="0" />
+  </g>
+</svg>
